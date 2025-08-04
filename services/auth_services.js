@@ -87,17 +87,7 @@ const protect = asyncHandler(async (req, res, next) => {
     next();
 });
 
-/*const allow_to = (...role) => {
-    return (req, res, next) => {
-        if (!role.includes(req.user.role)) {
-            return res.status(403).json({
-                status: 'fail',
-                message: "You do not have permission to perform this action!",
-            });
-        }
-        next();
-    };
-};*/
+
 const forget_password = asyncHandler(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -203,12 +193,3 @@ module.exports = {
 };
 
 
-/*exports.forgotPassword = asyncHandler(async (req, res, next) => {
-    res.status(200).json({ message: 'Forgot password route' });
-});
-exports.verifyPassResetCode = asyncHandler(async (req, res, next) => {
-    res.status(200).json({ message: 'Verify reset code route' });
-});
-exports.resetPassword = asyncHandler(async (req, res, next) => {
-    res.status(200).json({ message: 'Reset password route' });
-});*/

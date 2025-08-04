@@ -32,10 +32,10 @@ router.route('/:id/change-password')
 
 router.route('/')
   .get(auth_services.protect,
-    /*auth_services.*/allow_to('admin', 'manager'),
+    allow_to('admin', 'manager'),
     get_users)
   .post(auth_services.protect,
-    /*auth_services.*/allow_to('admin', 'manager'),
+    allow_to('admin', 'manager'),
     uploud_user_image,
     resize_user_image,
     create_user_validator,
@@ -60,17 +60,17 @@ router.route('/delete_me')
   
 router.route('/:id')
   .get(auth_services.protect,
-    /*auth_services.*/allow_to('admin', 'manager'),
+    allow_to('admin', 'manager'),
     get_user_validator, get_user)
   .put(auth_services.protect,
-    /*auth_services.*/allow_to('admin', 'manager'),
+    allow_to('admin', 'manager'),
     uploud_user_image,
     resize_user_image,
     update_user_validator,
     update_user
   )
   .delete(auth_services.protect,
-    /*auth_services.*/allow_to('admin'),
+    allow_to('admin'),
     delete_user_validator, delete_user);
 
 

@@ -5,17 +5,17 @@ const{create_adresses,delete_adresses,get_adresses}= require('../services/adress
 const allow_to = require('../middelware/allow_to');
 router.route('/').post(
     auth_services.protect,
-    /*auth_services.*/allow_to('user'),
+    allow_to('user'),
     create_adresses
 )
 .get(
     auth_services.protect,
-    /*auth_services.*/allow_to('user'),
+    allow_to('user'),
     get_adresses
 );
 router.route('/:adressId').delete(
     auth_services.protect,
-    /*auth_services.*/allow_to('user'),
+    allow_to('user'),
     delete_adresses
 );
 

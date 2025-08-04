@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const asyncHandler = require('express-async-handler');
 const review_services = require('../services/review_services');
 const auth_services = require('../services/auth_services');
@@ -19,13 +19,13 @@ const {
     delete_review_validator
 } = require('../utils/validator/review_validator');
 const allow_to = require('../middelware/allow_to');
-const Router = express.Router({ mergeParams: true });
+//const Router = express.Router({ mergeParams: true });
 // Route to get all reviews
 router.route('/')
     .get(create_filter_object,get_reviews)
     .post(
         auth_services.protect,
-        /*auth_services.*/allow_to('user'),
+        allow_to('user'),
         create_review_validator,
         set_product_user_id,
         create_review
@@ -35,13 +35,13 @@ router.route('/:id')
     .get(get_review_validator, get_review)
     .put(
         auth_services.protect,
-        /*auth_services.*/allow_to('user'),
+        allow_to('user'),
        update_review_validator,
         update_review
     )
 .delete(
     auth_services.protect,
-    /*auth_services.*/ allow_to('user', 'admin', 'manager'),
+     allow_to('user', 'admin', 'manager'),
     delete_review_validator,
     delete_review
 )

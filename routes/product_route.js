@@ -18,25 +18,26 @@ const {
   resize_product_images
 } = require('../services/product_services');
 const allow_to = require('../middelware/allow_to');
+const review_route = require('./review_route');
 
-router.use('/:productId/reviews', require('./review_route'));
+router.use('/:productId/reviews', review_route);
 
 
 
 router.route('/')
   .get(get_products)
   .post(auth_services.protect,
-  /*auth_services.*/allow_to('admin', 'manager'),
+  allow_to('admin', 'manager'),
     Product_image_upload,resize_product_images,create_product_validator, create_product);
 
 router.route('/:id')
   .get(get_product_validator, get_product)
   .put( auth_services.protect,
-  /*auth_services.*/allow_to('admin', 'manager'),
+  allow_to('admin', 'manager'),
     Product_image_upload,
   resize_product_images,update_product_validator, update_product)
   .delete(auth_services.protect,
-  /*auth_services.*/allow_to('admin'),
+  allow_to('admin'),
     delete_product_validator, delete_product);
 
 module.exports = router;

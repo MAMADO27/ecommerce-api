@@ -1,9 +1,9 @@
 const slugify = require('slugify');
 const { check ,body} = require('express-validator');
 const validator_middelware = require('../../middelware/validator_middelware');
-// filepath: c:\Users\me258\OneDrive\Desktop\EcommerceAPI\utils\validator\sub_category_validator.js
+
 const { param } = require('express-validator');
-// ...existing code...
+
 
 exports.category_id_validator = [
     param('categoryId').isMongoId().withMessage('Invalid Category ID Format'),
@@ -28,7 +28,7 @@ exports.update_sub_category_validator = [check('id').isMongoId().withMessage("In
             req.body.slug = slugify(val)
             return true;
         }),
-validator_middelware,
+validator_middelware
 ];
 
-exports.delete_sub_category_validator = [check('id').isMongoId().withMessage("Invalid sub_Category ID Format"),];
+exports.delete_sub_category_validator = [check('id').isMongoId().withMessage("Invalid sub_Category ID Format"),validator_middelware];

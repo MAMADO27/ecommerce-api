@@ -21,17 +21,17 @@ const allow_to = require('../middelware/allow_to');
 router.route('/')
   .get(get_brands)
   .post(auth_services.protect,
-  /*auth_services.*/allow_to('admin', 'manager'),
+  allow_to('admin', 'manager'),
   uploud_brand_image,resize_brand_image,create_brand_validator, create_brand);
 
 router.route('/:id')
   .get(get_brand_validator, get_brand)
   .put(auth_services.protect,
-  /*auth_services.*/allow_to('admin', 'manager'),
+  allow_to('admin', 'manager'),
     resize_brand_image,
   uploud_brand_image,update_brand_validator, update_brand)
   .delete(auth_services.protect,
-  /*auth_services.*/allow_to('admin'),
+  allow_to('admin'),
     delete_brand_validator, delete_brand);
 
 module.exports = router;

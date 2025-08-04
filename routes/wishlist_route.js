@@ -3,7 +3,7 @@ const router = express.Router();
 
 const protect = require('../services/auth_services').protect;
 const allow_to = require('../middelware/allow_to');
-console.log('allow_to:', allow_to);
+
 
 const { create_wishlist, delete_wishlist, get_wishlist } = require('../services/wishlist_services');
 
