@@ -26,7 +26,7 @@ It includes authentication, product management, order handling, and payment inte
 - **Express.js** (Web framework)
 - **MongoDB + Mongoose** (Database & ODM)
 - **JWT** (Authentication)
-- **Multer / Cloudinary / AWS S3** (Image upload)
+- **Multer** (Image upload)
 - **Stripe / PayPal** (Payments)
 - **Validator** (Input validation)
 
