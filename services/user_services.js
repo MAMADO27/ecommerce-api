@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 const create_token = require('../utils/create_token');
 
 
-exports.uploud_user_image = upload_single_image('image'); // Use the middleware to handle image upload
+exports.uploud_user_image = upload_single_image('image'); 
 
 exports.resize_user_image = async (req, res, next) => {
     if (!req.file) return next();
@@ -79,7 +79,7 @@ exports.delete_user = factory.delete_one(User);
 // @ route   GET /api/v1/users/mydata
 // @ access  Protected
 exports.get_my_data = asyncHandler(async (req, res, next) => {
-   req.params.id = req.user._id.toString(); // Set the user ID to the authenticated user's ID
+   req.params.id = req.user._id.toString(); 
    next();
 });
 

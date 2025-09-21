@@ -32,15 +32,4 @@ allow_to('user'),remove_cart_item),
 
 
 
-
-
-  //router.route('/:id')
- // .get(/*get_brand_validator,*/ get_copon)
- // .put(auth_services.protect,
- // /*auth_services.*/allow_to('admin', 'manager'),
-  //  /*update_brand_validator,*/ update_copon)
- // .delete(auth_services.protect,
- // /*auth_services.*/allow_to('admin'),
-  //  /*delete_brand_validator,*/ delete_copon);
-
 module.exports = router;

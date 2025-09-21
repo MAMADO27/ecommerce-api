@@ -19,7 +19,6 @@ const {
     delete_review_validator
 } = require('../utils/validator/review_validator');
 const allow_to = require('../middelware/allow_to');
-//const Router = express.Router({ mergeParams: true });
 // Route to get all reviews
 router.route('/')
     .get(create_filter_object,get_reviews)

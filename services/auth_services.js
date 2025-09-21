@@ -186,7 +186,6 @@ module.exports = {
   signup,
   login,
   protect,
-  //allow_to,
   forget_password,
   verify_reset_code,
   reset_password,

@@ -2,7 +2,7 @@ class api_fetchers {
   constructor(mongooseQuery, queryString) {
     this.mongooseQuery = mongooseQuery;
     this.queryString = queryString;
-    this.mongoQuery = {}; // نجمع فيه كل شروط الفلترة والبحث
+    this.mongoQuery = {}; 
   }
 
   filter() {
