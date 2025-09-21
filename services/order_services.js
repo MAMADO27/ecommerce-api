@@ -16,8 +16,8 @@ exports.create_cash_order = async_handler(async (req, res, next) => {
   const tax_price = 0;
   const shipping_price = 0;
 
-  // 1) Get cart depend on cartId
-  const cart = await Cart.findById(req.params.cartId);
+  // 1) Get cart depend on cartId (مع populate للمنتج)
+  const cart = await Cart.findById(req.params.cartId).populate('cart_items.product', 'price title');
   if (!cart) {
     return next(
       new api_error(`There is no such cart with id ${req.params.cartId}`, 404)
@@ -34,16 +34,20 @@ exports.create_cash_order = async_handler(async (req, res, next) => {
   // 3) Create order with default paymentMethodType cash
   const order = await Order.create({
     user: req.user._id,
-    cartI_items: cart.cart_items,
+    cart_items: cart.cart_items.map(item => ({
+      product: item.product._id,
+      quantity: item.quantity,
+      price: item.product.price
+    })),
     shipping_address: req.body.shipping_address,
-    totalOrderPrice: total_order_price,
+    total_order_price: total_order_price,
   });
 
   // 4) After creating order, decrement product quantity, increment product sold
   if (order) {
     const bulk_option = cart.cart_items.map((item) => ({
       updateOne: {
-        filter: { _id: item.product },
+        filter: { _id: item.product._id },
         update: { $inc: { quantity: -item.quantity, sold: +item.quantity } },
       },
     }));

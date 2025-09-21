@@ -10,7 +10,7 @@ const adress_route = require('./adress_route');
 const copon_route = require('./copon_route');
 const cart_route = require('./cart_route');
 const order_route = require('./order_route');
-
+const invoice_route = require('./invoice_route');
 // Function to mount all routes
  const mount_routes = (app) => {
     app.use('/api/v1/categories', category_route);
@@ -25,6 +25,7 @@ const order_route = require('./order_route');
     app.use('/api/v1/copons', copon_route);
     app.use('/api/v1/carts', cart_route);
     app.use('/api/v1/orders', order_route);
+    app.use('/api/v1/invoices', invoice_route);
 }
 
 
